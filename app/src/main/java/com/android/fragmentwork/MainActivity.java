@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 if(isBackStack.isChecked()){
-                    transaction.addToBackStack(null);
+                    transaction.addToBackStack(null); //add layout to stuck off layouts
                 }
                 transaction.commit(); //again like "DO". after this action destroy transaction
             }
@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 if(isBackStack.isChecked()){
-                    transaction.addToBackStack(null);
+                    transaction.addToBackStack(null);//add layout to stuck off layouts
                 }
                 transaction.commit(); //again like "DO". after this action destroy transaction
             }

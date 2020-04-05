@@ -14,6 +14,7 @@ import com.android.fragmentwork.R;
  * A simple {@link Fragment} subclass.
  */
 public class BlankFragment extends Fragment {
+    public static final String TAG = "Fragment1"; // This is like ID of fragment. by this TAG you can check, if he was already opened of not
 
     public BlankFragment() {
         // Required empty public constructor

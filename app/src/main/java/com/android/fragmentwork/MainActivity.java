@@ -29,21 +29,30 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-//                BlankFragment fragment = new BlankFragment();
-                fragment = new BlankFragment(); //make new object of fragment new every time new. other to be error
-
-                transaction = manager.beginTransaction();
                 /**
-                Every time when you making update Fragment, need make new transaction, because after
-                transaction.commit() - activity of this special Transaction finishing.
-                */
-
-                transaction.add(R.id.fragment_container, fragment); // Here connection class+layout fragment
-                transaction.commit(); //This part like say "DO!" and making update of fragment.
-                /**
-                 Also, after you using .commit(), you already lost transaction. And if you will need name any new
-                 updates, you need name new transaction and make action
+                In the object of Fragment we add TAG (is like ID of fragment).
+                 And now we can check if this special fragment was opened or not, for not open 2 time same fragment
                  */
+                if(manager.findFragmentByTag(BlankFragment.TAG) == null) { //checking, ig fragment was opened before or not
+
+//                BlankFragment fragment = new BlankFragment();
+                    fragment = new BlankFragment(); //make new object of fragment new every time new. other to be error
+
+                    transaction = manager.beginTransaction();
+                    /**
+                     Every time when you making update Fragment, need make new transaction, because after
+                     transaction.commit() - activity of this special Transaction finishing.
+                     */
+
+                    transaction.add(R.id.fragment_container, fragment, BlankFragment.TAG); // Here connection class+layout fragment
+                    transaction.commit(); //This part like say "DO!" and making update of fragment.
+                    /**
+                     Also, after you using .commit(), you already lost transaction. And if you will need name any new
+                     updates, you need name new transaction and make action
+                     */
+                }else{
+                    Toast.makeText(getBaseContext(), "You already opened this fragment", Toast.LENGTH_LONG).show();
+                }
 
             }
         });
@@ -52,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if(fragment != null) { //this check, for first open page. becouse till you not add fragment, not have what remove, so to be error
+                if(manager.findFragmentByTag(BlankFragment.TAG) != null) { //Checking by TAG if fragment was opened or not. If open, so can close this fragment
 
                     Toast.makeText(getBaseContext(), "Remove Fragment", Toast.LENGTH_LONG).show();
                     transaction = manager.beginTransaction();

@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import com.android.fragmentwork.fragments.BlankFragment;
@@ -19,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
     FragmentTransaction transaction;
     Fragment fragment1, fragment2;
 
+    Switch isBackStack;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         manager = getSupportFragmentManager(); // Connecting manager of Fragment
         fragment1 = new BlankFragment(); //make new object of fragment new every time new. other to be error
         fragment2 = new BlankFragment2();
+        isBackStack = findViewById(R.id.switch_back_stack);
 
 
         findViewById(R.id.btn_add).setOnClickListener(new View.OnClickListener() { //onClick Add fragment
@@ -79,6 +83,10 @@ public class MainActivity extends AppCompatActivity {
                 }else{ //other, no one fragments not was opened
                     Toast.makeText(getBaseContext(), "Remove Fragment, NOT have what remove", Toast.LENGTH_LONG).show();
                 }
+
+                if(isBackStack.isChecked()){
+                    transaction.addToBackStack(null);
+                }
                 transaction.commit(); //again like "DO". after this action destroy transaction
             }
         });
@@ -95,6 +103,10 @@ public class MainActivity extends AppCompatActivity {
                     transaction.replace(R.id.fragment_container, fragment1, BlankFragment.TAG);
                 }else{ //not have opened fragment, so not have what so switch
                     Toast.makeText(getBaseContext(), "NOT have what Replace", Toast.LENGTH_LONG).show();
+                }
+
+                if(isBackStack.isChecked()){
+                    transaction.addToBackStack(null);
                 }
                 transaction.commit(); //again like "DO". after this action destroy transaction
             }

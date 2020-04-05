@@ -29,12 +29,20 @@
             android:layout_weight="1"
             android:text="Remove"/>
 
+        <Button
+            android:id="@+id/btn_replace"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Replace"/>
+
         <!-- Options 2, with add functionality in the buttons by the self -->
         <!--Button
             android:id="@+id/btn_add_onclick"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="myOnClick"
+            android:layout_weight="1"
             android:text="Add OnClick"/>
 
         <Button
@@ -42,7 +50,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="myOnClick"
-            android:text="Remove Onclick"/-->
+            android:layout_weight="1"
+            android:text="Remove Onclick"/>
+
+        <Button
+            android:id="@+id/btn_replace"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="myOnClick"
+            android:layout_weight="1"
+            android:text="Replace"/-->
 
     </LinearLayout>
 

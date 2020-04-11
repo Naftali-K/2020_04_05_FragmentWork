@@ -36,30 +36,27 @@
             android:layout_weight="1"
             android:text="Replace"/>
 
-        <!-- Options 2, with add functionality in the buttons by the self -->
-        <!--Button
-            android:id="@+id/btn_add_onclick"
-            android:layout_width="wrap_content"
+    </LinearLayout>
+    
+    <LinearLayout
+        android:id="@+id/nav_line2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/nav_line"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <EditText
+            android:id="@+id/input_text"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:onClick="myOnClick"
-            android:layout_weight="1"
-            android:text="Add OnClick"/>
+            android:layout_weight="2"/>
 
         <Button
-            android:id="@+id/btn_remove_onclick"
+            android:id="@+id/btn_edd_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="myOnClick"
-            android:layout_weight="1"
-            android:text="Remove Onclick"/>
-
-        <Button
-            android:id="@+id/btn_replace"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="myOnClick"
-            android:layout_weight="1"
-            android:text="Replace"/-->
+            android:text="Text"/>
 
     </LinearLayout>
 
@@ -67,7 +64,7 @@
         android:id="@+id/switch_back_stack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/nav_line"
+        app:layout_constraintTop_toBottomOf="@id/nav_line2"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:text="Back Stack" />

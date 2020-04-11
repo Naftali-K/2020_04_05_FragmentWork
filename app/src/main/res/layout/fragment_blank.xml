@@ -8,6 +8,7 @@
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/output_text"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
@@ -18,5 +19,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="Num of fragment"/>
+
+    <!-- button for remove text. button will working from fragment.java -->
+    <Button
+        android:id="@+id/remove_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:text="Remove text"/>
 
 </FrameLayout>

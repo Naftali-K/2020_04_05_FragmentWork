@@ -8,7 +8,9 @@ import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.fragmentwork.fragments.BlankFragment;
@@ -33,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         isBackStack = findViewById(R.id.switch_back_stack);
 
 
+        //Button add - add new fragment -----------------------------------------------------------
         findViewById(R.id.btn_add).setOnClickListener(new View.OnClickListener() { //onClick Add fragment
             @Override
             public void onClick(View v) {
@@ -68,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //Button - remove fragment from container -------------------------------------------------
         findViewById(R.id.btn_remove).setOnClickListener(new View.OnClickListener() { //onClick Remove fragment
             @Override
             public void onClick(View v) {
@@ -91,6 +95,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // Button - Replace, changing fragment in container ---------------------------------------
         findViewById(R.id.btn_replace).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -111,31 +116,33 @@ public class MainActivity extends AppCompatActivity {
                 transaction.commit(); //again like "DO". after this action destroy transaction
             }
         });
+
+
+        // Button - add text/information from MainActivity to the fragment ------------------------
+        findViewById(R.id.btn_edd_text).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                /*
+                Right now have error, if you add text before add fragment. it's need repair.
+                 */
+                EditText editText = findViewById(R.id.input_text);
+                        String editTextStr = editText.getText().toString();
+//                        Toast.makeText(getBaseContext(), "text: " + editTextStr, Toast.LENGTH_LONG).show();
+                TextView textView = findViewById(R.id.output_text);
+                        textView.setText(editTextStr);
+                String nameFragment = null;
+                if(manager.findFragmentByTag(BlankFragment.TAG) != null){
+                    nameFragment = BlankFragment.TAG;
+                }else if (manager.findFragmentByTag(BlankFragment2.TAG) != null){
+                    nameFragment = BlankFragment2.TAG;
+                }else{
+                    nameFragment = "NOT have Fragment name";
+                }
+
+                TextView numFragment = findViewById(R.id.num_fragment);
+                        numFragment.setText("Name of Fragment: " + nameFragment);
+            }
+        });
     }
 
-//    //--------------------------------------------------------------------------------------
-//    //Option 2, using in the Buttons onClick, and enter number of function that will be using after onClick this button
-//    public void myOnClick(View view){
-//        Toast.makeText(getBaseContext(), "Used" + view.getId(), Toast.LENGTH_LONG).show();
-//        manager = getSupportFragmentManager();
-//        transaction = manager.beginTransaction();
-//
-//        switch (view.getId()){
-//            case R.id.btn_add_onclick:
-//                if(manager.findFragmentByTag(BlankFragment.TAG) == null){
-//                    transaction.add(R.id.fragment_container, fragment);
-//                }else{
-//                    Toast.makeText(getBaseContext(), "You already opened this fragment", Toast.LENGTH_LONG).show();
-//                }
-//                break;
-//            case R.id.btn_remove_onclick:
-//                if(manager.findFragmentByTag(BlankFragment.TAG) != null){
-//                    transaction.remove(fragment);
-//                }else{
-//                    Toast.makeText(getBaseContext(), "Remove Fragment, NOT have what remove", Toast.LENGTH_LONG).show();
-//                }
-//                break;
-//        }
-//        transaction.commit();
-//    }
 }

@@ -7,6 +7,9 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.fragmentwork.R;
 
@@ -26,5 +29,29 @@ public class BlankFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_blank, container, false);
+
+//        Button button = getActivity().findViewById(R.id.remove_text);
+        /**
+        in "onCreateView" can't use findViewById, because not sure if all layout was made. Because that
+         need connect functionality of button in lifeCycle after sure was made layout, is in onResume()
+         */
+    }
+
+
+    //remake of LifeCycle onResume() fragment, is will working only after made layout
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        Button button = getActivity().findViewById(R.id.remove_text);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Toast.makeText(getContext(), "Pushed remove button", Toast.LENGTH_LONG).show(); //test code, for check if button working
+
+                TextView outputText = getActivity().findViewById(R.id.output_text);
+                        outputText.setText("Empty Text");
+            }
+        });
     }
 }
